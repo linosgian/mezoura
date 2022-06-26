@@ -159,7 +159,7 @@ int load_cls_and_pin_maps(struct config *cfg)
 		return -1;
 	}
 
-	bpf_prog = bpf_object__find_program_by_title(obj, "classifier");
+	bpf_prog = bpf_object__find_program_by_name(obj, "bpf_main");
 	bpf_program__set_type(bpf_prog, BPF_PROG_TYPE_SCHED_CLS);
 	if (!bpf_prog) {
 		fprintf(stderr, "ERR: couldn't find a program in ELF section '%s'\n", "classifier");
